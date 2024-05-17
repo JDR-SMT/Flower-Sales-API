@@ -42,7 +42,7 @@ builder.Services.AddCors(options =>
 	options.AddDefaultPolicy(builder =>
 	{
 		builder
-			.WithOrigins("https://localhost:7276")
+			.WithOrigins("https://localhost:7283")
 			.WithHeaders("CITEMS-API-Version");
 	});
 });
