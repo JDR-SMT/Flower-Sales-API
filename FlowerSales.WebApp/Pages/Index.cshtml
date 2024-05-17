@@ -1,0 +1,32 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<ul id="flowers-list"></ul>
+
+@section Scripts {
+	<script>
+		let url = "https://localhost:7273/flowers";
+		let list = document.getElementById("flowers-list");
+
+		fetch(url)
+			.then(response => response.json())
+			.then(data => show(data))
+			.catch(ex => {
+				alert("Error: ");
+				console.error(ex);
+			});
+
+		function show(flowers) {
+			flowers.forEach(flower => {
+				let li = document.createElement("li");
+				let text = `${flower.name} (\$${flower.price})`;
+
+				li.appendChild(document.createTextNode(text));
+				list.appendChild(li);
+			});
+		}
+	</script>
+}
